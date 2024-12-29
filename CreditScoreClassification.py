@@ -2,12 +2,11 @@
 """
 Created on Wed Dec 18 14:05:28 2024
 
-@author: nisak
+@author: YASEMIN
 """
 
 import pandas as pd
-
-# Kredi notlarına göre uygunluk durumunu sınıflandıran fonksiyon
+# Function to classify creditworthiness based on credit score
 def kredi_durum_siniflandirma(not_degeri):
     if not_degeri <= 699:
         return "Çok Riskli - Krediye Uygun Değil"
@@ -20,17 +19,19 @@ def kredi_durum_siniflandirma(not_degeri):
     else:  # 1700 - 1900 aralığı
         return "Çok İyi - Tüm Kredi Türlerine Uygun"
 
-# Örnek bir veri çerçevesi
+
+# Sample DataFrame
 data = pd.DataFrame({
     'Kredi Notu': [1405, 1549, 870, 1170, 1395]
 })
 
-# Uygunluk durumunu ekleme
+# Adding creditworthiness classification to the DataFrame
 data['Kredi Uygunluk Durumu'] = data['Kredi Notu'].apply(kredi_durum_siniflandirma)
 
-# Tabloyu göster
+# Display the table
 print(data)
 
+# Function to provide loan recommendations based on credit score, income, and loan type
 def kredi_onerisi(kredi_notu, gelir, kredi_turu="ihtiyaç"):
     if kredi_notu >= 1500:
         if kredi_turu == "konut":
@@ -44,5 +45,5 @@ def kredi_onerisi(kredi_notu, gelir, kredi_turu="ihtiyaç"):
     else:
         return "Krediye uygun değilsiniz. Daha yüksek kredi notuna ihtiyaç var."
 
-# Örnek kullanım
+# Example usage
 print(kredi_onerisi(1600, 5000, kredi_turu="konut"))
