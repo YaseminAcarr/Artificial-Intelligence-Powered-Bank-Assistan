@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kredi Notu Hesaplama</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e7f4e7;
+            border: 1px solid #d4e9d4;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Kredi Notu Hesaplama</h2>
+        <form id="krediForm">
+            <div class="form-group">
+                <label for="gelir">Aylık Gelir Düzeyi:</label>
+                <input type="number" id="gelir" name="gelir" placeholder="Örneğin: 54000" required>
+            </div>
+            <div class="form-group">
+                <label for="ev_sayisi">Sahip Olduğunuz Ev Sayısı:</label>
+                <input type="number" id="ev_sayisi" name="ev_sayisi" placeholder="Örneğin: 1" required>
+            </div>
+            <div class="form-group">
+                <label for="araba_sayisi">Sahip Olduğunuz Araba Sayısı:</label>
+                <input type="number" id="araba_sayisi" name="araba_sayisi" placeholder="Örneğin: 1" required>
+            </div>
+            <div class="form-group">
+                <label for="arsa_sayisi">Sahip Olduğunuz Arsa Sayısı:</label>
+                <input type="number" id="arsa_sayisi" name="arsa_sayisi" placeholder="Örneğin: 0" required>
+            </div>
+            <div class="form-group">
+                <label for="borc">Mevcut Borç Miktarı:</label>
+                <input type="number" id="borc" name="borc" placeholder="Örneğin: 7000" required>
+            </div>
+            <div class="form-group">
+                <label for="calisma_yili">Toplam Çalışma Süresi (Yıl):</label>
+                <input type="number" id="calisma_yili" name="calisma_yili" placeholder="Örneğin: 3" required>
+            </div>
+            <div class="form-group">
+                <label for="egitim">Eğitim Düzeyi:</label>
+                <select id="egitim" name="egitim" required>
+                    <option value="Ortaokul Mezunu">Ortaokul Mezunu</option>
+                    <option value="Lise Mezunu">Lise Mezunu</option>
+                    <option value="Üniversite">Üniversite</option>
+                    <option value="Yüksek Lisans">Yüksek Lisans</option>
+                    <option value="Doktora">Doktora</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="medeni_durum">Medeni Durum:</label>
+                <select id="medeni_durum" name="medeni_durum" required>
+                    <option value="Evli">Evli</option>
+                    <option value="Bekar">Bekar</option>
+                </select>
+            </div>
+            <button type="button" onclick="hesapla()">Kredi Notunu Hesapla</button>
+        </form>
+
+        <div id="result" class="result" style="display: none;"></div>
+
+        <div id="krediOneri" class="result" style="display: none; margin-top: 10px;"></div>
+    </div>
+
+    <script>
+        function hesapla() {
+            const gelir = parseFloat(document.getElementById('gelir').value);
+            const ev_sayisi = parseInt(document.getElementById('ev_sayisi').value);
+            const araba_sayisi = parseInt(document.getElementById('araba_sayisi').value);
+            const arsa_sayisi = parseInt(document.getElementById('arsa_sayisi').value);
+            const borc = parseFloat(document.getElementById('borc').value);
+            const calisma_yili = parseInt(document.getElementById('calisma_yili').value);
+            const egitim = document.getElementById('egitim').value;
+            const medeni_durum = document.getElementById('medeni_durum').value;
+
+            // Kredi notu hesaplama işlemleri
+            const gelir_puan = gelir < 10000 ? 500 : gelir < 20000 ? 1000 : gelir < 40000 ? 2000 : gelir < 60000 ? 3000 : 4000;
+            const ev_puan = Math.min(ev_sayisi * 100, 300);
+            const araba_puan = Math.min(araba_sayisi * 60, 180);
+            const arsa_puan = Math.min(arsa_sayisi * 80, 240);
+            const borc_puan = borc === 0 ? 2000 : borc < 10000 ? 1000 : borc < 30000 ? 500 : 50;
+            const calisma_puan = calisma_yili <= 5 ? 500 : calisma_yili <= 10 ? 1000 : calisma_yili <= 20 ? 2000 : 3000;
+            const egitim_puan = { "Ortaokul Mezunu": 50, "Lise Mezunu": 100, "Üniversite": 150, "Yüksek Lisans": 200, "Doktora": 250 }[egitim];
+            const medeni_puan = medeni_durum === "Evli" ? 100 : 50;
+
+            const kredi_notu = Math.round(
+                (gelir_puan * 0.3) +
+                ((ev_puan + araba_puan + arsa_puan) * 0.15) +
+                (borc_puan * 0.15) +
+                (calisma_puan * 0.2) +
+                (egitim_puan * 0.1) +
+                (medeni_puan * 0.1)
+            );
+
+            let uygunluk;
+            if (kredi_notu <= 699) {
+                uygunluk = "Çok Riskli - Krediye Uygun Değil";
+            } else if (kredi_notu <= 1099) {
+                uygunluk = "Orta Riskli - Kefil ile Düşük Limitli Kredi";
+            } else if (kredi_notu <= 1499) {
+                uygunluk = "Az Riskli - İhtiyaç Kredisi (Düşük-Orta Limit)";
+            } else if (kredi_notu <= 1699) {
+                uygunluk = "İyi - İhtiyaç ve Konut Kredisi (Orta-Yüksek Limit)";
+            } else {
+                uygunluk = "Çok İyi - Tüm Kredi Türlerine Uygun";
+            }
+
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('result').innerHTML = <p>Kredi Notunuz: <strong>${kredi_notu}</strong></p><p>Uygunluk Durumu: <strong>${uygunluk}</strong></p>;
+
+            // Kredi önerisi
+            let kredi_onerisi;
+            if (kredi_notu >= 1500) {
+                kredi_onerisi = "Konut Kredisi - Uygun: Faiz %1.2, Limit: 500.000 TL";
+            } else if (kredi_notu >= 1100) {
+                kredi_onerisi = "İhtiyaç Kredisi - Düşük Limit: Faiz %2.0, Limit: 20.000 TL";
+            } else {
+                kredi_onerisi = "Krediye uygun değilsiniz. Daha yüksek kredi notuna ihtiyaç var.";
+            }
+
+            document.getElementById('krediOneri').style.display = 'block';
+            document.getElementById('krediOneri').innerHTML = <p>Kredi Önerisi: <strong>${kredi_onerisi}</strong></p>;
+        }
+    </script>
+</body>
+</html>
