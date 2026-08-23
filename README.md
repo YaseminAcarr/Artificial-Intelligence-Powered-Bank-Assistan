@@ -23,11 +23,11 @@ Kullanıcıların gelir, varlık, borç, eğitim ve medeni durum bilgilerini gir
 
 ## 🚀 Temel Özellikler
 
-- **🧠 Makine Öğrenmesi ile Kredi Skoru Tahmini:** `BankAssistantModeling.py` dosyası içerisinde yer alan Linear Regression ve optimize edilmiş Random Forest Regressor algoritmalarıyla yüksek doğrulukta skorlama.
-- **⚖️ SMOTE Desteği:** Sınıf dengesizliğini ortadan kaldırmak için sentetik veri türetme yaklaşımları.
-- **📊 Kredi Risk ve Uygunluk Sınıflandırması:** Kredi notuna göre "Çok Riskli", "Orta Riskli", "Az Riskli", "İyi" ve "Çok İyi" olmak üzere kademeli risk analizi .
-- **💡 Akıllı Kredi Önerisi ve Hesaplama:** Kullanıcının gelir, varlık ve borç durumuna göre özel faiz oranları ve limitlerle kredi önerisi ve hesaplama modülü .
-- **💻 Web Arayüzü:** Kullanıcıların tarayıcı üzerinden kolayca verilerini girip sonuç alabileceği web sayfaları .
+- ** Makine Öğrenmesi ile Kredi Skoru Tahmini:** `BankAssistantModeling.py` dosyası içerisinde yer alan Linear Regression ve optimize edilmiş Random Forest Regressor algoritmalarıyla yüksek doğrulukta skorlama.
+- **SMOTE Desteği:** Sınıf dengesizliğini ortadan kaldırmak için sentetik veri türetme yaklaşımları.
+- **Kredi Risk ve Uygunluk Sınıflandırması:** Kredi notuna göre "Çok Riskli", "Orta Riskli", "Az Riskli", "İyi" ve "Çok İyi" olmak üzere kademeli risk analizi .
+- **Akıllı Kredi Önerisi ve Hesaplama:** Kullanıcının gelir, varlık ve borç durumuna göre özel faiz oranları ve limitlerle kredi önerisi ve hesaplama modülü .
+- **Web Arayüzü:** Kullanıcıların tarayıcı üzerinden kolayca verilerini girip sonuç alabileceği web sayfaları .
 
 ---
 
