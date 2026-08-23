@@ -35,7 +35,7 @@ Kullanıcıların gelir, varlık, borç, eğitim ve medeni durum bilgilerini gir
 
 ## 🛠️ Kullanılan Teknolojiler ve Kütüphaneler
 
-* **Dil:** Python[cite: 1]
+* **Dil:** Python
 * **Veri Analizi & İşleme:** Pandas, NumPy, SciPy
 * **Makine Öğrenmesi:** Scikit-Learn (`LinearRegression`, `RandomForestRegressor`, `StandardScaler`, `SimpleImputer`, `LabelEncoder`)
 * **Veri Dengeleme:** SMOTE
