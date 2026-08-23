@@ -6,7 +6,7 @@ Model geliştirme sürecinde karşılaşılan veri yetersizliği ve sınıf deng
 
 ---
 ### 👥 Proje Ekibi
-**Yasemin Acar, Fatma Gül Doğtaş, Nisanur Kurt, Zeynep Dursun
+-** Yasemin Acar, Fatma Gül Doğtaş, Nisanur Kurt, Zeynep Dursun
 ---
 
 ##  Ekran Görüntüleri & Arayüz
