@@ -6,9 +6,10 @@ Model geliştirme sürecinde karşılaşılan veri yetersizliği ve sınıf deng
 
 ---
 ### 👥 Proje Ekibi
-Yasemin Acar, Fatma Gül Doğtaş, Nisanur Kurt, Zeynep Dursun
+**Yasemin Acar, Fatma Gül Doğtaş, Nisanur Kurt, Zeynep Dursun
 ---
-## 📸 Ekran Görüntüleri & Arayüz
+
+##  Ekran Görüntüleri & Arayüz
 Kredi notu hesaplama ve banka asistanı arayüzünü tarayıcınızda denemek için aşağıdaki butona tıklayabilirsiniz:
 [Click](https://yaseminacarr.github.io/Artificial-Intelligence-Powered-Bank-Assistan/)
 
